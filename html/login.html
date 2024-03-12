@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="./Main.html">Facebook</a>
+    </div>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./signup.html" style="color: aliceblue;">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./Main.html" style="color: aliceblue;">Home</a>
+        </li>
+    </ul>
+  </nav>
+
+  <!-- Your login form here -->
+  <div class="container mt-4">
+    <h2>Log In</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom Script -->
+  <script>
+    // Log In Form Submission
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Here you can add the logic to handle log in
+      console.log("Log In Details:");
+      console.log("Email: ", email);
+      console.log("Password: ", password);
+
+      // You can redirect the user to the main page after successful log in
+      // window.location.href = "main.html";
+    });
+  </script>
+</body>
+</html>

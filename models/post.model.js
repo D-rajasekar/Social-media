@@ -1,21 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config.js";
-// import { role } from "./role.model.js";
+import { UserDetails } from "./user.model.js"; // Import the Followers model
 
 const Post = sequelize.define(
   "Post",
   {
-    // Model attributes are defined here
-    post_id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-
-    user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     subject: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -39,5 +28,7 @@ const Post = sequelize.define(
     // Other model options go here
   }
 );
+
+Post.belongsTo(UserDetails, { foreignKey: { allowNull: false } });
 
 export { Post };

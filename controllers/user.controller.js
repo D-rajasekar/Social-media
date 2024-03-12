@@ -2,6 +2,22 @@ import userService from "../services/user.service.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+async function getalluser(request, response) {
+  const userData = userService.getalluserQuery();
+  response.send(await userData);
+}
+
+async function getprofile(request, response) {
+  const token_key = request.header("x-auth-token");
+  console.log(token_key);
+  const id = await userService.getIDByToken(token_key);
+  console.log("????????????????????????", id);
+
+  
+  const userData = await userService.getprofileQuery(id.user_id);
+  response.send(userData);
+}
+
 async function genHashPassword(userPassword) {
   const NO_OF_ROUNDS = 10;
   const salt = await bcrypt.genSalt(NO_OF_ROUNDS);
@@ -63,4 +79,4 @@ async function logout(request, response) {
   response.send("token expired");
 }
 
-export default { signup, login, logout };
+export default { signup, login, logout, getalluser, getprofile };

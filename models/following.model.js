@@ -2,15 +2,14 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../config.js";
 import { UserDetails } from "./user.model.js";
 
-
-const Followers = sequelize.define(
-  "Followers",
+const Following = sequelize.define(
+  "Following",
   {
     uid: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    followers: {
+    following: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -21,4 +20,4 @@ const Followers = sequelize.define(
 );
 // Followers.belongsTo(UserDetails, { foreignKey: { allowNull: false } });
 
-export { Followers };
+export { Following };

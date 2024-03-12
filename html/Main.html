@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook-like Post, Comment, Follow</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Facebook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+      
+          <li class="nav-item">
+            <a class="nav-link" href="./posts.html">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./profile.html">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Friends</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="signup.html" style="color: aliceblue;">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html" style="color: aliceblue;">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutBtn" style="display: none;">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- New Post Form -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <form id="postForm">
+          <div class="form-group">
+            <input type="text" class="form-control mb-2" placeholder="Image URL (Optional)">
+            <label for="postSubject">Subject:</label>
+            <input type="text" class="form-control" id="postSubject" placeholder="Enter subject">
+          </div>
+          <div class="form-group">
+            <label for="postDescription">Description:</label>
+            <textarea class="form-control" id="postDescription" rows="3" placeholder="Enter description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Post Cards -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <!-- Post Card -->
+        <div class="card post-card">
+          <div class="card-body">
+            <!-- User Profile -->
+            <div class="d-flex align-items-center">
+              <img src="profile.jpg" alt="User Profile">
+              <strong class="ml-2">User Name</strong>
+            </div>
+            <!-- Post Content -->
+            <div class="post-content mt-3">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu elit a nulla consectetur aliquam ut sit amet elit.</p>
+            </div>
+            <!-- Like Button -->
+            <button type="button" class="btn btn-primary btn-sm like-btn">Like</button>
+            <span class="like-counter">0</span> Likes
+            <!-- Comment Input -->
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Write a comment...">
+            </div>
+
+            <div class="div1">
+                <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
+           
+            <button type="button" class="btn btn-info btn-sm follow-btn-sm ">Follow</button>
+       
+            <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#comment-section-1" aria-expanded="false" aria-controls="comment-section-1">
+              View Comments
+            </button>
+            </div>
+            
+
+
+        
+            <div class="collapse comment-section" id="comment-section-1">
+              <!-- Individual Comment -->
+              <div class="comment">
+                <div class="user-profile">
+                  <img src="profile.jpg" alt="User Profile">
+                  <strong>User Name</strong>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <!-- Another Individual Comment -->
+              <div class="comment">
+                <div class="user-profile">
+                  <img src="profile.jpg" alt="User Profile">
+                  <strong>User Name</strong>
+                </div>
+                <p>Nullam eu elit a nulla consectetur aliquam ut sit amet elit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add more post cards as needed -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+
+      // JavaScript for Like Button
+      let likeCounter = 0;
+      const likeBtns = document.querySelectorAll('.like-btn');
+      const likeCounterSpans = document.querySelectorAll('.like-counter');
+    
+      likeBtns.forEach((likeBtn, index) => {
+        likeBtn.addEventListener('click', () => {
+          likeCounter++;
+          likeCounterSpans[index].textContent = likeCounter;
+        });
+      });
+  </script>
+</body>
+</html>
