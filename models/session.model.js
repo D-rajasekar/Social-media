@@ -8,7 +8,6 @@ const Session = sequelize.define(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
     token: {
       type: DataTypes.STRING,

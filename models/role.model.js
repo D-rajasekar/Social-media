@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config.js";
  
-const Roles = sequelize.define("access", {
+const Roles = sequelize.define("role", {
   role_id: {
     type: DataTypes.INTEGER,
     allowNull: false,

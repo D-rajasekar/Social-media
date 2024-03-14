@@ -58,6 +58,7 @@ async function getfollowingQuery(id) {
     },
   });
 }
+
 export default {
   createPostQuery,
   getPostIDQuery,
