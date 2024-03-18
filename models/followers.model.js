@@ -21,4 +21,4 @@ const Followers = sequelize.define(
 );
 // Followers.belongsTo(UserDetails, { foreignKey: { allowNull: false } });
 
-export { Followers };
+export {  };

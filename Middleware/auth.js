@@ -10,7 +10,6 @@ const auth = async (request, response, next) => {
     const tokenCheck = await Session.findOne({
       where: {
         token: token,
-        expired: "No",
       },
     });
     if (tokenCheck) {

@@ -13,11 +13,6 @@ const Session = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    expired: {
-      type: DataTypes.STRING,
-      defaultValue: "No",
-    },
   },
   {
     // Other model options go here

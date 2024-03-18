@@ -17,13 +17,18 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.route("/image").post(auth,upload.single("image"), postController.postimage);
-router.route("/").post(auth,postController.createPost);
-router.route("/comments").post(auth,postController.createcomment);
-router.route("/").get(auth,postController.getAllPost);
-router.route("/comment/:id").get(auth,postController.getcomment);
-router.route("/followerslist").get(auth,postController.getfollowers);
-router.route("/follow").post(auth,postController.createfollowing);
-router.route("/followinglist").get(auth,postController.getfollowing);
-router.route("/id").get(auth,postController.getPost);
+router
+  .route("/image")
+  .post(auth, upload.single("image"), postController.createPost);
+
+// router.route("/").post(auth,postController.createPost);
+router.route("/comments").post(auth, postController.createcomment);
+router.route("/").get(auth, postController.getAllPost);
+router.route("/comment/:id").get(auth, postController.getcomment);
+router.route("/followerslist").get(auth, postController.getfollowers);
+router.route("/follow").post(auth, postController.createfollowing);
+router.route("/followinglist").get(auth, postController.getfollowing);
+router.route("/delete/:id").delete(postController.deletepost);
+router.route("/id").get(auth, postController.getPost);
+
 export default router;

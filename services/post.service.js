@@ -1,19 +1,27 @@
 import { Comment } from "../models/comment.model.js";
-import { Followers } from "../models/followers.model.js";
+//import { Followers } from "../models/followers.model.js";
 import { Following } from "../models/following.model.js";
 import { Post } from "../models/post.model.js";
 import { UserDetails } from "../models/user.model.js";
 
-async function createPostQuery(UserDetailId, subject, description, Timestamp) {
-  return await Post.create({
-    UserDetailId,
-    subject,
-    description,
-    Timestamp,
-  });
+async function createPostQuery(UserDetailId, Image, subject, description) {
+  try {
+    return await Post.create({
+      UserDetailId,
+      Image,
+      subject,
+      description,
+    });
+  } catch (error) {
+    return { msg: "something error in post" };
+  }
 }
-async function createCommentQuery(ans) {
-  return await Comment.create(ans);
+async function createCommentQuery(PostId, content, UserDetailId) {
+  return await Comment.create({
+    PostId,
+    content,
+    UserDetailId,
+  });
 }
 
 async function getAllPostQuery(dbQuery) {
@@ -31,9 +39,9 @@ async function createFollowService(uid, following) {
   return await Following.create({ uid, following });
 }
 
-async function createfollowQuery(uid, follower) {
-  return await Followers.create({ uid: follower, followers: uid });
-}
+// async function createfollowQuery(uid, follower) {
+//   return await Following.create({ uid: follower, followers: uid });
+// }
 
 async function getcommentQuery(id) {
   return await Comment.findAll({
@@ -44,9 +52,9 @@ async function getcommentQuery(id) {
   });
 }
 async function getfollowersQuery(id) {
-  return await Followers.findAll({
+  return await Following.findAll({
     where: {
-      uid: id,
+      following: id,
     },
   });
 }
@@ -59,14 +67,24 @@ async function getfollowingQuery(id) {
   });
 }
 
+async function deletePostQuery(PostId, UserDetailId) {
+  return await Post.destroy({
+    where: {
+      id: PostId,
+      UserDetailId,
+    },
+  });
+}
+
 export default {
   createPostQuery,
   getPostIDQuery,
   createCommentQuery,
-  createfollowQuery,
+  // createfollowQuery,
   createFollowService,
   getAllPostQuery,
   getcommentQuery,
   getfollowersQuery,
   getfollowingQuery,
+  deletePostQuery,
 };
